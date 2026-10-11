@@ -7,8 +7,8 @@ export default function Footer() {
       {/* Red accent line */}
       <div className="h-px bg-gradient-to-r from-transparent via-[#dc2626] to-transparent" />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
           {/* Brand */}
           <div className="lg:col-span-1">
@@ -102,14 +102,14 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t border-black/5 dark:border-white/5">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-gray-600 dark:text-gray-500 text-xs">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-gray-600 dark:text-gray-500 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} CapAuto. Tous droits réservés.
           </p>
-          <div className="flex items-center gap-4">
-            <Link href="/mentions-legales" className="text-gray-600 dark:text-gray-500 hover:text-[#dc2626] dark:hover:text-gray-400 text-xs transition-colors">Mentions légales</Link>
+          <div className="flex items-center gap-3 lg:gap-4">
+            <Link href="/mentions-legales" className="text-gray-600 dark:text-gray-500 hover:text-[#dc2626] dark:hover:text-gray-400 text-xs sm:text-sm transition-colors">Mentions légales</Link>
             <span className="text-gray-400 dark:text-gray-700">·</span>
-            <Link href="/politique-confidentialite" className="text-gray-600 dark:text-gray-500 hover:text-[#dc2626] dark:hover:text-gray-400 text-xs transition-colors">Confidentialité</Link>
+            <Link href="/politique-confidentialite" className="text-gray-600 dark:text-gray-500 hover:text-[#dc2626] dark:hover:text-gray-400 text-xs sm:text-sm transition-colors">Confidentialité</Link>
           </div>
         </div>
       </div>

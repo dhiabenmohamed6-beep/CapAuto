@@ -113,7 +113,7 @@ export default function AdminDashboard() {
       </div>
 
       {/* ── Stats grid ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-5 lg:mb-6">
         <StatCard icon={Car} label="Véhicules actifs" value={stats?.vehicules_actifs || 0} sub="Annonces publiées" trend="up" />
         <StatCard icon={TrendingUp} label="Véhicules vendus" value={stats?.vehicules_vendus || 0} sub="Total cumulé" color="#22c55e" trend="up" />
         <StatCard icon={Eye} label="Vues catalogue" value={stats?.vues_catalogue || 0} sub="Ce mois" color="#3b82f6" trend="up" />
@@ -121,20 +121,20 @@ export default function AdminDashboard() {
       </div>
 
       {/* ── Secondary stats ── */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4 mb-6 lg:mb-8">
         {[
           { label: 'Total véhicules', value: stats?.vehicules_total || 0, icon: Car },
           { label: 'En brouillon', value: stats?.vehicules_brouillon || 0, icon: Activity },
           { label: 'Réservés', value: stats?.vehicules_reserves || 0, icon: Activity },
           { label: 'Vendus', value: stats?.vehicules_vendus || 0, icon: TrendingUp },
         ].map(({ label, value, icon: Icon }) => (
-          <div key={label} className="bg-white border border-gray-200 rounded-xl px-4 py-3 flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gray-50 flex items-center justify-center">
-              <Icon className="w-4 h-4 text-gray-400" />
+          <div key={label} className="bg-white border border-gray-200 rounded-xl px-3 lg:px-4 py-2.5 lg:py-3 flex items-center gap-2 lg:gap-3">
+            <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-lg bg-gray-50 flex items-center justify-center flex-shrink-0">
+              <Icon className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-gray-400" />
             </div>
             <div>
-              <p className="text-gray-900 font-bold text-lg">{loading ? '…' : formatNumber(value)}</p>
-              <p className="text-gray-400 text-xs">{label}</p>
+              <p className="text-gray-900 font-bold text-base lg:text-lg">{loading ? '…' : formatNumber(value)}</p>
+              <p className="text-gray-400 text-[10px] lg:text-xs">{label}</p>
             </div>
           </div>
         ))}
@@ -198,46 +198,46 @@ export default function AdminDashboard() {
       </div>
 
       {/* ── Activity + Quick actions ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
         {/* Activity feed */}
-        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-6">
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-gray-900 font-bold">Activité récente</h2>
+        <div className="lg:col-span-2 bg-white border border-gray-200 rounded-2xl p-4 lg:p-6">
+          <div className="flex items-center justify-between mb-4 lg:mb-6">
+            <h2 className="text-gray-900 font-bold text-base lg:text-lg">Activité récente</h2>
             <Activity className="w-4 h-4 text-gray-300" />
           </div>
           <div className="space-y-1">
             {activity.length === 0 && loading ? (
               Array.from({ length: 5 }).map((_, i) => (
-                <div key={i} className="flex items-center gap-3 py-2">
-                  <div className="w-8 h-8 rounded-full bg-gray-100 animate-pulse" />
-                  <div className="flex-1 space-y-1.5">
+                <div key={i} className="flex items-center gap-2 lg:gap-3 py-2">
+                  <div className="w-7 h-7 lg:w-8 lg:h-8 rounded-full bg-gray-100 animate-pulse flex-shrink-0" />
+                  <div className="flex-1 min-w-0 space-y-1.5">
                     <div className="h-3 bg-gray-100 rounded animate-pulse w-3/4" />
                     <div className="h-2.5 bg-gray-100 rounded animate-pulse w-1/2" />
                   </div>
                 </div>
               ))
             ) : activity.map((item, i) => (
-              <div key={i} className="flex items-start gap-3 py-2.5 border-b border-gray-50 last:border-0">
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${item.type === 'vehicle' ? 'bg-red-50 text-[#dc2626]' : 'bg-blue-50 text-blue-500'}`}>
+              <div key={i} className="flex items-start gap-2 lg:gap-3 py-2 lg:py-2.5 border-b border-gray-50 last:border-0">
+                <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-full flex items-center justify-center flex-shrink-0 ${item.type === 'vehicle' ? 'bg-red-50 text-[#dc2626]' : 'bg-blue-50 text-blue-500'}`}>
                   {item.type === 'vehicle' ? <Car className="w-3.5 h-3.5" /> : <MessageSquare className="w-3.5 h-3.5" />}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-gray-700 text-sm font-medium">{item.label}</p>
-                  <p className="text-gray-400 text-xs mt-0.5">
+                  <p className="text-gray-700 text-xs lg:text-sm font-medium truncate">{item.label}</p>
+                  <p className="text-gray-400 text-[10px] lg:text-xs mt-0.5 truncate">
                     {item.vehicle && <span>{item.vehicle}</span>}
                     {item.from && <span> · De: {item.from}</span>}
                   </p>
                 </div>
-                <span className="text-gray-300 text-xs flex-shrink-0">{timeAgo(item.timestamp)}</span>
+                <span className="text-gray-300 text-[10px] lg:text-xs flex-shrink-0">{timeAgo(item.timestamp)}</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Quick actions */}
-        <div className="bg-white border border-gray-200 rounded-2xl p-6">
-          <h2 className="text-gray-900 font-bold mb-6">Actions rapides</h2>
-          <div className="space-y-2.5">
+        <div className="bg-white border border-gray-200 rounded-2xl p-4 lg:p-6">
+          <h2 className="text-gray-900 font-bold text-base lg:text-lg mb-4 lg:mb-6">Actions rapides</h2>
+          <div className="space-y-2 lg:space-y-2.5">
             {[
               { href: '/admin/vehicules/nouveau', label: 'Ajouter un véhicule', icon: Car, bg: 'bg-red-50', color: 'text-[#dc2626]' },
               { href: '/admin/vehicules', label: 'Gérer les véhicules', icon: Car, bg: 'bg-blue-50', color: 'text-blue-500' },
@@ -247,26 +247,26 @@ export default function AdminDashboard() {
               <Link
                 key={href}
                 href={href}
-                className="flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:border-[#dc2626]/30 hover:bg-red-50/30 transition-all group"
+                className="flex items-center gap-2 lg:gap-3 p-2.5 lg:p-3 rounded-xl border border-gray-100 hover:border-[#dc2626]/30 hover:bg-red-50/30 transition-all group"
               >
-                <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${bg}`}>
-                  <Icon className={`w-4 h-4 ${color}`} />
+                <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-lg flex items-center justify-center flex-shrink-0 ${bg}`}>
+                  <Icon className={`w-3.5 h-3.5 lg:w-4 lg:h-4 ${color}`} />
                 </div>
-                <span className="text-gray-600 text-sm font-medium group-hover:text-gray-900 transition-colors flex-1">{label}</span>
-                <ArrowRight className="w-3 h-3 text-gray-300 group-hover:text-[#dc2626] transition-colors" />
+                <span className="text-gray-600 text-xs lg:text-sm font-medium group-hover:text-gray-900 transition-colors flex-1 truncate">{label}</span>
+                <ArrowRight className="w-3 h-3 text-gray-300 group-hover:text-[#dc2626] transition-colors flex-shrink-0" />
               </Link>
             ))}
           </div>
 
           {/* CapAuto branding block */}
-          <div className="mt-6 p-4 bg-[#dc2626] rounded-xl text-white">
+          <div className="mt-4 lg:mt-6 p-3 lg:p-4 bg-[#dc2626] rounded-xl text-white">
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-6 h-6 bg-white rounded-md flex items-center justify-center">
-                <span className="text-[#dc2626] font-black text-xs">C</span>
+              <div className="w-5 h-5 lg:w-6 lg:h-6 bg-white rounded-md flex items-center justify-center flex-shrink-0">
+                <span className="text-[#dc2626] font-black text-[10px] lg:text-xs">C</span>
               </div>
-              <span className="font-black text-sm tracking-wide">CapAuto</span>
+              <span className="font-black text-xs lg:text-sm tracking-wide">CapAuto</span>
             </div>
-            <p className="text-white/80 text-xs leading-relaxed">
+            <p className="text-white/80 text-[10px] lg:text-xs leading-relaxed">
               Tableau de bord administrateur — Gérez votre catalogue et suivez votre activité.
             </p>
           </div>

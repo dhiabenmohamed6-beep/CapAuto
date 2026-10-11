@@ -96,15 +96,15 @@ export default function Header() {
           <div className="flex items-center justify-between h-16 lg:h-20">
 
             {/* ── Logo ── */}
-            <Link href="/" className="flex items-center gap-3 group flex-shrink-0">
-              <div className="w-9 h-9 lg:w-11 lg:h-11 bg-[#dc2626] rounded-lg flex items-center justify-center shadow-md group-hover:bg-[#ef4444] transition-colors duration-300">
-                <span className="text-white font-black text-lg lg:text-xl tracking-tight">C</span>
+            <Link href="/" className="flex items-center gap-2 lg:gap-3 group flex-shrink-0">
+              <div className="w-8 h-8 lg:w-9 lg:h-9 xl:w-11 xl:h-11 bg-[#dc2626] rounded-lg flex items-center justify-center shadow-md group-hover:bg-[#ef4444] transition-colors duration-300">
+                <span className="text-white font-black text-base lg:text-lg xl:text-xl tracking-tight">C</span>
               </div>
-              <div>
-                <span className="text-gray-900 dark:text-white font-black tracking-[0.12em] text-sm lg:text-base uppercase block leading-tight">
+              <div className="hidden sm:block">
+                <span className="text-gray-900 dark:text-white font-black tracking-[0.12em] text-xs sm:text-sm lg:text-base uppercase block leading-tight">
                   CapAuto
                 </span>
-                <span className="text-[#dc2626] text-[9px] lg:text-[10px] tracking-[0.25em] uppercase font-medium block">
+                <span className="text-[#dc2626] text-[8px] sm:text-[9px] lg:text-[10px] tracking-[0.25em] uppercase font-medium block">
                   L&apos;excellence automobile
                 </span>
               </div>
@@ -136,12 +136,12 @@ export default function Header() {
               {/* Favorites icon */}
               <Link
                 href="/mes-favoris"
-                className="relative p-2 text-gray-500 dark:text-gray-400 hover:text-[#dc2626] transition-colors"
+                className="relative p-2 lg:p-2.5 text-gray-500 dark:text-gray-400 hover:text-[#dc2626] transition-colors"
                 aria-label="Mes favoris"
               >
-                <Heart className="w-5 h-5" />
+                <Heart className="w-5 h-5 lg:w-5.5 lg:h-5.5" />
                 {favCount > 0 && (
-                  <span className="absolute -top-0.5 -right-0.5 w-4 h-4 bg-[#dc2626] rounded-full text-white text-[9px] font-black flex items-center justify-center">
+                  <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 lg:w-4 lg:h-4 bg-[#dc2626] rounded-full text-white text-[8px] lg:text-[9px] font-black flex items-center justify-center">
                     {favCount > 9 ? '9+' : favCount}
                   </span>
                 )}
@@ -150,10 +150,10 @@ export default function Header() {
               {/* Theme toggle */}
               <button
                 onClick={toggleTheme}
-                className="p-2 rounded-lg text-gray-500 dark:text-gray-400 hover:text-[#dc2626] hover:bg-[#dc2626]/10 transition-colors"
+                className="p-2 lg:p-2.5 rounded-lg text-gray-500 dark:text-gray-400 hover:text-[#dc2626] hover:bg-[#dc2626]/10 transition-colors"
                 aria-label="Changer le thème"
               >
-                {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+                {theme === 'dark' ? <Sun className="w-5 h-5 lg:w-5.5 lg:h-5.5" /> : <Moon className="w-5 h-5 lg:w-5.5 lg:h-5.5" />}
               </button>
 
               {/* Message bell — visible when logged in */}
@@ -161,12 +161,12 @@ export default function Header() {
                 <Link
                   href={isAdmin ? '/admin/messages' : '/profil?tab=messages'}
                   onClick={markSeen}
-                  className="relative p-2 text-gray-500 dark:text-gray-400 hover:text-[#dc2626] transition-colors"
+                  className="relative p-2 lg:p-2.5 text-gray-500 dark:text-gray-400 hover:text-[#dc2626] transition-colors"
                   aria-label="Messages"
                 >
-                  <MessageSquare className="w-5 h-5" />
+                  <MessageSquare className="w-5 h-5 lg:w-5.5 lg:h-5.5" />
                   {msgCount > 0 && (
-                    <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-0.5 bg-[#dc2626] rounded-full text-white text-[9px] font-black flex items-center justify-center animate-bounce">
+                    <span className="absolute -top-0.5 -right-0.5 min-w-[14px] lg:min-w-[16px] h-3.5 lg:h-4 px-0.5 bg-[#dc2626] rounded-full text-white text-[8px] lg:text-[9px] font-black flex items-center justify-center animate-bounce">
                       {msgCount > 9 ? '9+' : msgCount}
                     </span>
                   )}
@@ -174,28 +174,28 @@ export default function Header() {
               )}
 
               {/* ── User area ── */}
-              {!loading && (
+{!loading && (
                 isAuthenticated ? (
                   <div ref={menuRef} className="relative">
                     {/* Trigger button — avatar + name */}
                     <button
                       onClick={() => setUserMenuOpen(v => !v)}
-                      className={`flex items-center gap-2.5 px-2 py-1.5 rounded-xl transition-all ${
+                      className={`flex items-center gap-2 lg:gap-2.5 px-2 lg:px-3 py-1.5 lg:py-2 rounded-xl transition-all ${
                         userMenuOpen
                           ? 'bg-gray-100 dark:bg-white/8'
                           : 'hover:bg-gray-100 dark:hover:bg-white/5'
                       }`}
                     >
                       {/* Avatar circle with initials */}
-                      <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${bgColor}`}>
-                        <span className="text-white text-xs font-black">{initials}</span>
+                      <div className={`w-7 h-7 lg:w-8 lg:h-8 rounded-full flex items-center justify-center flex-shrink-0 ${bgColor}`}>
+                        <span className="text-white text-xs lg:text-sm font-black">{initials}</span>
                       </div>
                       {/* Name — hidden on small screens */}
-                      <div className="hidden sm:flex flex-col items-start leading-tight">
-                        <span className="text-gray-900 dark:text-white text-xs font-bold truncate max-w-[100px]">
+                      <div className="hidden lg:flex flex-col items-start leading-tight">
+                        <span className="text-gray-900 dark:text-white text-xs lg:text-sm font-bold truncate max-w-[100px] lg:max-w-[120px]">
                           {displayName}
                         </span>
-                        <span className="text-gray-400 text-[10px]">
+                        <span className="text-gray-400 text-[9px] lg:text-[10px]">
                           {isAdmin ? 'Administrateur' : 'Membre'}
                         </span>
                       </div>
@@ -204,7 +204,7 @@ export default function Header() {
 
                     {/* ── Dropdown ── */}
                     {userMenuOpen && (
-                      <div className="absolute right-0 top-full mt-2 w-64 bg-white dark:bg-[#16161a] border border-gray-100 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-[fadeInUp_0.15s_ease_both]">
+                      <div className="absolute right-0 top-full mt-2 w-56 lg:w-64 bg-white dark:bg-[#16161a] border border-gray-100 dark:border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 animate-[fadeInUp_0.15s_ease_both]">
 
                         {/* Profile header */}
                         <div className="px-4 py-4 bg-gradient-to-br from-[#dc2626]/5 to-transparent border-b border-gray-100 dark:border-white/5">
@@ -304,9 +304,9 @@ export default function Header() {
                 ) : (
                   <Link
                     href="/connexion"
-                    className="hidden sm:flex items-center gap-2 px-4 lg:px-5 py-2 lg:py-2.5 text-[11px] lg:text-xs rounded-xl font-black tracking-widest bg-[#dc2626] hover:bg-[#b91c1c] text-white transition-colors shadow-sm"
+                    className="hidden lg:flex items-center gap-2 px-4 lg:px-5 py-2 lg:py-2.5 text-[11px] lg:text-xs rounded-xl font-black tracking-widest bg-[#dc2626] hover:bg-[#b91c1c] text-white transition-colors shadow-sm"
                   >
-                    <User className="w-3.5 h-3.5" />
+                    <User className="w-3.5 h-3.5 lg:w-4 lg:h-4" />
                     CONNEXION
                   </Link>
                 )
@@ -331,7 +331,7 @@ export default function Header() {
           className={`absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity ${mobileOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setMobileOpen(false)}
         />
-        <div className={`absolute top-0 right-0 h-full w-72 bg-white dark:bg-[#111114] border-l border-black/10 dark:border-white/8 transition-transform duration-300 flex flex-col ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`absolute top-0 right-0 h-full w-full max-w-[320px] bg-white dark:bg-[#111114] border-l border-black/10 dark:border-white/8 transition-transform duration-300 flex flex-col ${mobileOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="flex items-center justify-between px-6 h-16 border-b border-black/5 dark:border-white/8">
             <span className="text-gray-900 dark:text-white font-black tracking-widest text-sm">MENU</span>
             <button onClick={() => setMobileOpen(false)} className="text-gray-500 hover:text-gray-900 dark:hover:text-white">

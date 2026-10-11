@@ -1,15 +1,17 @@
 ﻿'use client';
 
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Eye, EyeOff, ArrowRight, Mail, Lock, User, ArrowLeft } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { authApi } from '@/lib/api';
+import { PageLoader } from '@/components/ui/Spinner';
 
-export default function ConnexionPage() {
+function ConnexionContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { login, reload } = useAuth();
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
   const [email, setEmail] = useState('');
@@ -24,6 +26,8 @@ export default function ConnexionPage() {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [mounted, setMounted] = useState(false);
+
+  const redirectUrl = searchParams?.get('redirect') || '/admin';
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 50);
@@ -40,7 +44,7 @@ export default function ConnexionPage() {
     setLoading(true);
     try {
       await login(email, password);
-      router.push('/admin');
+      router.push(redirectUrl);
     } catch (err: unknown) {
       const apiError = err as { response?: { data?: { error?: string } } };
       setError(apiError?.response?.data?.error || 'Identifiants invalides. Veuillez réessayer.');
@@ -485,5 +489,13 @@ export default function ConnexionPage() {
         </div>
       </div>
     </>
+  );
+}
+
+export default function ConnexionPage() {
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <ConnexionContent />
+    </Suspense>
   );
 }

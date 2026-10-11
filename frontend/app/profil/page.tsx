@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -26,7 +26,7 @@ function avatarColor(name: string) {
 
 type Tab = 'info' | 'messages' | 'security';
 
-export default function ProfilPage() {
+function ProfilContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const { user, isAuthenticated, loading, reload } = useAuth();
@@ -60,7 +60,10 @@ export default function ProfilPage() {
 
   // Redirect if not authenticated
   useEffect(() => {
-    if (!loading && !isAuthenticated) router.push('/connexion');
+    if (!loading && !isAuthenticated) {
+      const redirectUrl = window.location.pathname + window.location.search;
+      router.push(`/connexion?redirect=${encodeURIComponent(redirectUrl)}`);
+    }
   }, [loading, isAuthenticated, router]);
 
   // Populate form from user
@@ -492,5 +495,13 @@ export default function ProfilPage() {
       </main>
       <Footer />
     </>
+  );
+}
+
+export default function ProfilPage() {
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <ProfilContent />
+    </Suspense>
   );
 }

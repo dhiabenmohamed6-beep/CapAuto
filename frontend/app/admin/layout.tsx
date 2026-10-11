@@ -1,7 +1,7 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useRouter, usePathname } from 'next/navigation';
+import { useEffect, useState, Suspense } from 'react';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
   LayoutDashboard, Car, Tag, Users, MessageSquare,
@@ -20,16 +20,20 @@ const NAV_ITEMS = [
   { href: '/admin/messages', label: 'Messages', icon: MessageSquare },
 ];
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
+function AdminSidebar({ children }: { children: React.ReactNode }) {
   const { user, isAdmin, loading, logout } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
 
   useEffect(() => {
-    if (!loading && !isAdmin) router.push('/connexion');
-  }, [loading, isAdmin, router]);
+    if (!loading && !isAdmin) {
+      const redirectUrl = pathname + (searchParams?.toString() ? `?${searchParams.toString()}` : '');
+      router.push(`/connexion?redirect=${encodeURIComponent(redirectUrl)}`);
+    }
+  }, [loading, isAdmin, router, pathname, searchParams]);
 
   // Fetch unread messages count
   useEffect(() => {
@@ -183,5 +187,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </main>
       </div>
     </div>
+  );
+}
+
+export default function AdminLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <Suspense fallback={<PageLoader />}>
+      <AdminSidebar children={children} />
+    </Suspense>
   );
 }

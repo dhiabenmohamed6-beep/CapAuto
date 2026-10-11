@@ -121,8 +121,8 @@ export default function SearchFilters({ filters, onChange, onReset, compact = fa
   if (compact) {
     // ── Hero compact search ───────────────────────────────────────────────
     return (
-      <div className="bg-gray-100 dark:bg-[#111114]/95 backdrop-blur-xl border border-black/10 dark:border-white/8 rounded-2xl p-4 lg:p-6 shadow-2xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 lg:gap-4">
+      <div className="bg-gray-100 dark:bg-[#111114]/95 backdrop-blur-xl border border-black/10 dark:border-white/8 rounded-2xl p-3 sm:p-4 lg:p-6 shadow-2xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 sm:gap-3 lg:gap-4">
           <FilterSelect label="Marque" value={localFilters.brand || ''} options={brands} onChange={v => update('brand', v)} />
           <FilterSelect label="Modèle" value={localFilters.model || ''} options={models} onChange={v => update('model', v)} placeholder={localFilters.brand ? 'Tous les modèles' : 'Choisir une marque'} />
           <FilterSelect label="Carburant" value={localFilters.fuel_type || ''} options={FUEL_TYPES} onChange={v => update('fuel_type', v)} />
@@ -130,7 +130,7 @@ export default function SearchFilters({ filters, onChange, onReset, compact = fa
           <div className="flex items-end">
             <a
               href={`/vehicules?${new URLSearchParams(Object.fromEntries(Object.entries(localFilters).filter(([,v]) => v !== undefined && v !== '').map(([k,v]) => [k, String(v)]))).toString()}`}
-              className="btn-orange w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-lg text-sm font-black tracking-widest"
+              className="btn-orange w-full flex items-center justify-center gap-2 px-4 sm:px-6 py-2.5 rounded-lg text-xs sm:text-sm font-black tracking-widest"
             >
               <Search className="w-4 h-4" />
               RECHERCHER

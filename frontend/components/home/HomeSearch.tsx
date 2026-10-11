@@ -21,7 +21,7 @@ function Select({
         <select
           value={value}
           onChange={e => onChange(e.target.value)}
-          className="w-full appearance-none bg-white border border-gray-200 text-gray-900 rounded-xl px-4 py-3 pr-9 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#dc2626]/20 focus:border-[#dc2626] transition-all cursor-pointer"
+          className="w-full appearance-none bg-white border border-gray-200 text-gray-900 rounded-xl px-3 py-2.5 lg:px-4 lg:py-3 pr-9 text-sm lg:text-base font-medium focus:outline-none focus:ring-2 focus:ring-[#dc2626]/20 focus:border-[#dc2626] transition-all cursor-pointer"
         >
           <option value="">{placeholder || 'Tous'}</option>
           {options.map(o => <option key={o} value={o}>{o}</option>)}
@@ -135,7 +135,7 @@ export default function HomeSearch() {
                   onChange={e => setMaxPrice(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder="Sans limite"
-                  className="w-full bg-white border border-gray-200 text-gray-900 rounded-xl px-4 py-3 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#dc2626]/20 focus:border-[#dc2626] transition-all placeholder-gray-400"
+                  className="w-full bg-white border border-gray-200 text-gray-900 rounded-xl px-3 py-2.5 lg:px-4 lg:py-3 text-sm lg:text-base font-medium focus:outline-none focus:ring-2 focus:ring-[#dc2626]/20 focus:border-[#dc2626] transition-all placeholder-gray-400"
                 />
               </div>
 
@@ -144,9 +144,9 @@ export default function HomeSearch() {
                 <span className="text-[10px] text-transparent font-bold tracking-[0.2em] uppercase px-1 hidden lg:block">&#8203;</span>
                 <button
                   onClick={handleSearch}
-                  className="w-full lg:w-auto flex items-center justify-center gap-2.5 px-8 py-3 rounded-xl bg-[#dc2626] hover:bg-[#b91c1c] text-white font-black text-sm tracking-widest transition-all shadow-md hover:shadow-lg hover:shadow-red-200 active:scale-[0.98] whitespace-nowrap"
+                  className="w-full lg:w-auto flex items-center justify-center gap-2.5 px-6 lg:px-8 py-2.5 lg:py-3 rounded-xl bg-[#dc2626] hover:bg-[#b91c1c] text-white font-black text-xs lg:text-sm tracking-widest transition-all shadow-md hover:shadow-lg hover:shadow-red-200 active:scale-[0.98] whitespace-nowrap"
                 >
-                  <Search className="w-4 h-4" />
+                  <Search className="w-4 h-4 lg:w-4.5 lg:h-4.5" />
                   RECHERCHER
                 </button>
               </div>
@@ -166,7 +166,7 @@ export default function HomeSearch() {
                 <button
                   key={label}
                   onClick={() => router.push(`/vehicules?${params}`)}
-                  className="px-3 py-1 rounded-lg text-xs font-semibold bg-gray-100 text-gray-600 hover:bg-[#dc2626] hover:text-white transition-all border border-gray-200 hover:border-[#dc2626]"
+                  className="px-2.5 lg:px-3 py-1.5 rounded-lg text-xs font-semibold bg-gray-100 text-gray-600 hover:bg-[#dc2626] hover:text-white transition-all border border-gray-200 hover:border-[#dc2626]"
                 >
                   {label}
                 </button>

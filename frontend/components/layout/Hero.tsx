@@ -116,7 +116,7 @@ export default function Hero() {
           {/* Slide tag */}
           <div className={`flex items-center gap-3 mb-6 transition-all duration-500 ${animating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
             <span className="w-10 h-px bg-[#dc2626]" />
-            <span className="text-[#dc2626] text-xs tracking-[0.35em] uppercase font-bold">
+            <span className="text-[#dc2626] text-xs sm:text-sm tracking-[0.35em] uppercase font-bold">
               {slide.brand} · {slide.tag}
             </span>
           </div>
@@ -124,48 +124,48 @@ export default function Hero() {
           {/* Headline */}
           <div className={`mb-6 transition-all duration-500 delay-75 ${animating ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
             <h1 className="font-black tracking-tight leading-[0.92]">
-              <span className="block text-white text-5xl sm:text-6xl lg:text-7xl xl:text-[88px]">
+              <span className="block text-white text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
                 {slide.headline[0]}
               </span>
-              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] via-[#ef4444] to-[#dc2626] text-5xl sm:text-6xl lg:text-7xl xl:text-[88px]">
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#dc2626] via-[#ef4444] to-[#dc2626] text-4xl sm:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl">
                 {slide.headline[1]}
               </span>
-              <span className="block text-white/85 text-3xl sm:text-4xl lg:text-5xl xl:text-6xl mt-1">
+              <span className="block text-white/85 text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl mt-1">
                 {slide.headline[2]}
               </span>
             </h1>
-            <p className="text-gray-300 text-lg lg:text-xl font-light italic mt-3">
+            <p className="text-gray-300 text-base sm:text-lg lg:text-xl font-light italic mt-3">
               {slide.sub}
             </p>
           </div>
 
           {/* CTAs */}
-          <div className={`flex flex-col sm:flex-row gap-4 mb-14 transition-all duration-500 delay-150 ${animating ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
+          <div className={`flex flex-col sm:flex-row gap-4 mb-10 lg:mb-14 transition-all duration-500 delay-150 ${animating ? 'opacity-0 translate-y-6' : 'opacity-100 translate-y-0'}`}>
             <Link
               href="/vehicules"
-              className="btn-orange inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-sm font-black tracking-widest shadow-[0_8px_30px_rgba(220,38,38,0.4)]"
+              className="btn-orange inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-black tracking-widest shadow-[0_8px_30px_rgba(220,38,38,0.4)]"
             >
               VOIR LE CATALOGUE
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/contact"
-              className="btn-outline inline-flex items-center justify-center gap-3 px-8 py-4 rounded-xl text-sm font-black tracking-widest"
+              className="btn-outline inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-4 rounded-xl text-xs sm:text-sm font-black tracking-widest"
             >
               NOUS CONTACTER
             </Link>
           </div>
 
           {/* Stats */}
-          <div className={`flex items-center gap-6 sm:gap-10 pt-8 border-t border-white/10 transition-all duration-500 delay-200 ${animating ? 'opacity-0' : 'opacity-100'}`}>
+          <div className={`flex flex-wrap items-center gap-4 sm:gap-6 lg:gap-10 pt-6 lg:pt-8 border-t border-white/10 transition-all duration-500 delay-200 ${animating ? 'opacity-0' : 'opacity-100'}`}>
             {[
               { value: '25+', label: 'Marques Premium' },
               { value: '300+', label: 'Véhicules' },
               { value: '10 ans', label: "D'expérience" },
             ].map(({ value, label }) => (
               <div key={label}>
-                <div className="text-2xl lg:text-3xl font-black text-white">{value}</div>
-                <div className="text-gray-400 text-xs tracking-wider uppercase mt-0.5">{label}</div>
+                <div className="text-xl sm:text-2xl lg:text-3xl font-black text-white">{value}</div>
+                <div className="text-gray-400 text-[10px] sm:text-xs tracking-wider uppercase mt-0.5">{label}</div>
               </div>
             ))}
           </div>
@@ -175,49 +175,49 @@ export default function Hero() {
       {/* ── Slide nav arrows ── */}
       <button
         onClick={prev}
-        className="absolute left-4 lg:left-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#dc2626] hover:border-[#dc2626] transition-all"
+        className="absolute left-2 lg:left-4 xl:left-8 top-1/2 -translate-y-1/2 z-20 w-9 h-9 lg:w-11 lg:h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#dc2626] hover:border-[#dc2626] transition-all lg:hidden"
         aria-label="Précédent"
       >
-        <ChevronLeft className="w-5 h-5" />
+        <ChevronLeft className="w-4 h-4 lg:w-5 lg:h-5" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 lg:right-8 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#dc2626] hover:border-[#dc2626] transition-all"
+        className="absolute right-2 lg:right-4 xl:right-8 top-1/2 -translate-y-1/2 z-20 w-9 h-9 lg:w-11 lg:h-11 rounded-full bg-white/10 border border-white/20 backdrop-blur-sm flex items-center justify-center text-white hover:bg-[#dc2626] hover:border-[#dc2626] transition-all lg:hidden"
         aria-label="Suivant"
       >
-        <ChevronRight className="w-5 h-5" />
+        <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5" />
       </button>
 
       {/* ── Slide dots ── */}
-      <div className="absolute bottom-24 lg:bottom-12 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+      <div className="absolute bottom-16 lg:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 lg:gap-2">
         {SLIDES.map((_, i) => (
           <button
             key={i}
             onClick={() => go(i)}
             className={`transition-all duration-300 rounded-full ${
               i === current
-                ? 'w-8 h-1.5 bg-[#dc2626]'
-                : 'w-1.5 h-1.5 bg-white/30 hover:bg-white/60'
+                ? 'w-6 lg:w-8 h-1.5 bg-[#dc2626]'
+                : 'w-1.5 lg:w-1.5 h-1.5 lg:h-1.5 bg-white/30 hover:bg-white/60'
             }`}
           />
         ))}
       </div>
 
       {/* ── Current slide label bottom-right ── */}
-      <div className="absolute bottom-24 lg:bottom-12 right-6 lg:right-10 z-20 text-right hidden sm:block">
+      <div className="absolute bottom-16 lg:bottom-10 right-4 lg:right-6 xl:right-10 z-20 text-right hidden sm:block">
         <p className="text-white font-black text-sm tracking-wide">{slide.brand}</p>
         <p className="text-gray-400 text-xs">{slide.model}</p>
       </div>
 
       {/* ── Slide counter ── */}
-      <div className="absolute bottom-24 lg:bottom-12 left-6 lg:left-10 z-20 hidden sm:flex items-center gap-2 text-xs text-gray-500 font-mono">
+      <div className="absolute bottom-16 lg:bottom-10 left-4 lg:left-6 xl:left-10 z-20 hidden sm:flex items-center gap-1.5 lg:gap-2 text-xs lg:text-sm text-gray-500 font-mono">
         <span className="text-white font-bold">{String(current + 1).padStart(2, '0')}</span>
-        <span className="w-8 h-px bg-white/20" />
+        <span className="w-6 lg:w-8 h-px bg-white/20" />
         <span>{String(SLIDES.length).padStart(2, '0')}</span>
       </div>
 
       {/* ── Scroll cue ── */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce">
+      <div className="absolute bottom-4 lg:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 animate-bounce">
         <ChevronDown className="w-5 h-5 text-gray-400" />
       </div>
     </section>

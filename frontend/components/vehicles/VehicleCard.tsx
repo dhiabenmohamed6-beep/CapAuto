@@ -89,7 +89,7 @@ export default function VehicleCard({ vehicle, onFavoriteToggle }: VehicleCardPr
         </div>
 
         {/* Specs grid */}
-        <div className="grid grid-cols-2 gap-x-4 gap-y-2 mb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-2 mb-4">
           <div className="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
             <Calendar className="w-3 h-3 text-gray-600 dark:text-gray-400" />
             <span className="text-xs">{vehicle.year}</span>
